@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "name": "keepass-js",
+  "description": "keepass",
+  "version": "1.0",
+  "background": {
+    "scripts": [
+      "lib/dropbox/Dropbox-sdk.min.js",
+      "src/main.js"
+    ]
+  },
+  "permissions": [
+    "identity",
+    "storage"
+  ],
+  "options_page": "view/options.html"
+}
