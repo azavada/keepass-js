@@ -1,6 +1,6 @@
-const DROPBOX_ACCESS_TOKEN = "dropbox-access-token";
-
 $(function () {
+    const DROPBOX_ACCESS_TOKEN = "dropboxAccessToken";
+
     function loadDropStatus() {
         chrome.storage.local.get(null, function (items) {
 
@@ -20,27 +20,22 @@ $(function () {
     }
 
     function addDropboxClickHandler() {
+        var dropBoxAuth = new DropBoxAuth();
+
         $("#dropbox").click(function () {
             var $this = $(this);
             if ($this.val() === "Use Dropbox") {
-
-                var authUrl = "https://www.dropbox.com/1/oauth2/authorize?" +
-                    "response_type=token&" +
-                    "client_id=ykk5iijr0sarpyk&" +
-                    "redirect_uri=" + encodeURIComponent(chrome.identity.getRedirectURL('dropbox'));
-
-                chrome.identity.launchWebAuthFlow({'url': authUrl, 'interactive': true}, function (response) {
-                    if (!chrome.runtime.lastError && response.length > 0) {
-                        var token = utils.parseQueryString(response.substring(response.indexOf("#") + 1)).access_token;
-                        chrome.storage.local.set(wrapObject(DROPBOX_ACCESS_TOKEN, token), loadDropStatus);
-                    }
+                dropBoxAuth.login(function (token) {
+                    chrome.storage.local.set(wrapObject(DROPBOX_ACCESS_TOKEN, token), loadDropStatus);
+                    chrome.storage.local.set({"provider": "dropbox"});
                 });
+
             } else {
-                chrome.storage.local.get(DROPBOX_ACCESS_TOKEN, function(items) {
-                    var dbx = new Dropbox({accessToken: items[DROPBOX_ACCESS_TOKEN]});
-                    dbx.authTokenRevoke();
+                chrome.storage.local.get(DROPBOX_ACCESS_TOKEN, function (items) {
+                    dropBoxAuth.logout(items[DROPBOX_ACCESS_TOKEN]);
 
                     chrome.storage.local.remove(DROPBOX_ACCESS_TOKEN, loadDropStatus);
+                    chrome.storage.local.remove("provider");
                 });
             }
 

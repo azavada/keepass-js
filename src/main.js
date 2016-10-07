@@ -14,17 +14,17 @@
 
     // require("dropbox-sdk");
 
-    var ACCESS_TOKEN = '';
-
-    var dbx = new Dropbox({ accessToken: ACCESS_TOKEN });
-    dbx.filesListFolder({path: ''})
-        .then(function(response) {
-            console.log(response);
-            response.entries.forEach(function(item){
-                console.log(item.path_display);
-            });
-        })
-        .catch(function(error) {
-            console.error(error);
-        });
+    // var ACCESS_TOKEN = '';
+    //
+    // var dbx = new Dropbox({ accessToken: ACCESS_TOKEN });
+    // dbx.filesListFolder({path: ''})
+    //     .then(function(response) {
+    //         console.log(response);
+    //         response.entries.forEach(function(item){
+    //             console.log(item.path_display);
+    //         });
+    //     })
+    //     .catch(function(error) {
+    //         console.error(error);
+    //     });
 })();

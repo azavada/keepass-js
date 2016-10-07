@@ -11,7 +11,9 @@
   },
   "permissions": [
     "identity",
-    "storage"
+    "storage",
+    "https://dropbox.com/*"
   ],
-  "options_page": "view/options.html"
+  "options_page": "view/options.html",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAq0hxMQhiPVHBWQqJjA4xklPEkhKT6u6kZ55a0+hUvPkxLt9iRaiRsOXppBp1BmmQFCa4jiAOfXCNWWRSn+48edr8C42u8Z+fg3+6SWHhuv+1LtBUq6HUMghJcviZpP1zB6/Bz5Om4/bVQyD3MWUN4IadOc+gdOZ/SNqpSLyr11D5UTXSrc6qaZa4PuKSmTlJrpwxNzpA9aBOt7YMrgu5Xbp1N6VLIJlth0Axtn32FpiBr7SwHtPrWCWEaeUg5AMHzYGFpIlBi0oAymP8iRMz/FFuyrFbABC8qq06TxRT7uqLlruwwIayuHL2dQ9hYC6jym+dyKnGahma3V5XiXiYkQIDAQAB"
 }
