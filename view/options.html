@@ -5,8 +5,10 @@
     <title>Options</title>
 
     <link href="../lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../lib/jstree/themes/default/style.css"/>
 
     <script src="../lib/jquery-3.1.1.min.js"></script>
+    <script src="../lib/jstree/jstree.js"></script>
     <script src="../lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 
     <script src="../lib/dropbox/Dropbox-sdk.min.js"></script>
@@ -17,5 +19,10 @@
 </head>
 <body>
 <input id="dropbox" class="btn btn-lg" type="button" value="Dropbox">
+
+<span>Selected file:
+    <span id="selected_file"></span>
+</span>
+<div id="jstree_div"></div>
 </body>
 </html>
