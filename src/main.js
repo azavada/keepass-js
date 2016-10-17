@@ -5,7 +5,8 @@
             if (items["provider"] === "dropbox") {
                 var provider = new DropBoxProvider(items["dropboxAccessToken"]);
                 provider.downloadFile(items["dropboxFileId"], function (data) {
-                    chrome.storage.local.set({dbFile: data});
+                    // chrome.storage.local.set({dbFile: data});
+                    // parseKDBX(data);
                 });
             }
         });
@@ -22,6 +23,18 @@
             });
     }
 
+    function parseKDBX(dataAsString) {
+        console.log("parsing kdbx....");
+        try {
+            var credentials = new kdbxweb.Credentials(kdbxweb.ProtectedValue.fromString('qwerty'), undefined);
+            kdbxweb.Kdbx.load(dataAsString, credentials, function(db) {
+                console.log(db);
+            });
+        } catch (e) {
+            console.log(e);
+        }
+
+    }
 
     loadOptions();
     addMessageListener();
